@@ -16,8 +16,8 @@ describe TransactionLog do
     end
   end
 
-  describe '#save_transacrion' do
-    it 'saves a passed transection to the log' do
+  describe '#save_transaction' do
+    it 'saves a passed transaction to the log' do
       transaction = transaction_log.create_transaction(7,0,7)
       transaction_log.save_transaction(transaction)
       expect(transaction_log.log).to include transaction

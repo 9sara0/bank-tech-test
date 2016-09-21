@@ -7,6 +7,10 @@ describe Account do
     it 'has 0 balance' do
       expect(my_account.balance).to eq 0
     end
+
+    it 'instantiates a TransactionLog object ' do
+      expect(my_account.history).to be_a_kind_of(TransactionLog)
+    end
   end
 
   describe '#deposit' do
