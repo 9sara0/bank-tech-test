@@ -5,4 +5,8 @@ class Account
     @balance = 0
   end
 
+  def deposit(cridet)
+    @balance += cridet
+  end
+
 end
