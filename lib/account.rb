@@ -9,4 +9,8 @@ class Account
     @balance += cridet
   end
 
+  def withdraw(debit)
+    @balance -= debit
+  end
+
 end

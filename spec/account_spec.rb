@@ -11,8 +11,13 @@ describe Account do
 
   describe '#deposit' do
     it "adds cridet credit to the account's balance" do
-      my_account.deposit(7)
-      expect(my_account.balance).to eq 7
+      expect{my_account.deposit(7)}.to change{my_account.balance}.by 7
+    end
+  end
+
+  describe '#withdraw' do
+    it "deduts debit amount from the account's balane" do
+      expect{my_account.withdraw(7)}.to change{my_account.balance}.by -7
     end
   end
 end
