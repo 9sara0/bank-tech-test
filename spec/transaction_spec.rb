@@ -11,8 +11,8 @@ describe Transaction do
       expect(transaction.credit).to eq 7
     end
 
-    it 'saves the deposited amount' do
-      expect(transaction.deposit).to eq 0
+    it 'saves the debited amount' do
+      expect(transaction.debit).to eq 0
     end
 
     it 'saves the accounts balance after the transaction is completed' do
