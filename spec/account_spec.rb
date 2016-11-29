@@ -38,5 +38,10 @@ describe Account do
       expect(account).to receive(:create_transaction)
       account.withdraw(7)
     end
+
+    it "saves the new transaction to the hidtory" do
+      expect(account).to receive(:save_transaction)
+      account.withdraw(7)
+    end
   end
 end
