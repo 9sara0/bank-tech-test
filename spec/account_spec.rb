@@ -44,4 +44,11 @@ describe Account do
       account.withdraw(7)
     end
   end
+
+  describe "#print_statement" do
+    it "creates a new statement" do
+      expect(account).to receive(:create_statement)
+      account.print_statement
+    end
+  end
 end

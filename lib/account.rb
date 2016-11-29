@@ -1,5 +1,6 @@
 require_relative "transaction"
 require_relative "transaction_history"
+require_relative "statement"
 class Account
   attr_reader :balance, :history
 
@@ -20,6 +21,11 @@ class Account
     save_transaction
   end
 
+  def print_statement
+    create_statement
+    @statement.print
+  end
+
 
   private
   attr_reader :transaction
@@ -30,5 +36,9 @@ class Account
 
   def save_transaction
     @history.save_transaction(transaction)
+  end
+
+  def create_statement
+    @statement = Statement.new(history.log)
   end
 end

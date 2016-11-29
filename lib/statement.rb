@@ -1,7 +1,7 @@
 require_relative "transaction"
 require_relative "transaction_history"
 
-class statement
+class Statement
   HEADER = "date || credit || debit || balance"
 
   def initialize(log)
@@ -9,17 +9,18 @@ class statement
   end
 
   def print
-    HEADER + get
+    HEADER + get_body
   end
+
 
   private
 
   attr_reader :log
 
-  def get
+  def get_body
     statement = ""
     @log.reverse.each do |transaction|
-      statement << "\n#{date_format(transaction.date)} || #{float_format(transaction.credit)} || #{float_format(transaction.debit)} || #{float_format(transaction.new_account_balance)}"
+      statement << "\n#{date_format(transaction.date)} || #{float_format(transaction.credit)} || #{float_format(transaction.debit)} || #{float_format(transaction.balance)}"
     end
     return statement
   end
