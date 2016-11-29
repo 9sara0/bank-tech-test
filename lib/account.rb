@@ -11,6 +11,7 @@ class Account
   def deposit(amount)
     @balance += amount
     create_transaction(credit: amount)
+    save_transaction
   end
 
   def withdraw(amount)
@@ -26,4 +27,7 @@ class Account
     @transaction = Transaction.new(credit: credit, debit: debit, balance: balance)
   end
 
+  def save_transaction
+    @history.save_transaction(transaction)
+  end
 end
