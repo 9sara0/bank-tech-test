@@ -1,27 +1,33 @@
-require 'account'
+require "account"
 
 describe Account do
-  subject (:my_account) {described_class.new}
+  subject(:account) { described_class.new }
 
-  context 'when initialized' do
-    it 'has 0 balance' do
-      expect(my_account.balance).to eq 0
-    end
-
-    it 'instantiates a TransactionLog object ' do
-      expect(my_account.history).to be_a_kind_of(TransactionLog)
+  context "When initialized" do
+    it "has a zero balance" do
+      expect(account.balance).to eq 0
     end
   end
 
-  describe '#deposit' do
-    it "adds cridet credit to the account's balance" do
-      expect{my_account.deposit(7)}.to change{my_account.balance}.by 7
+  describe "#deposit" do
+    it "increases balance by 'amount'" do
+      expect{account.deposit(7)}.to change{account.balance}.by 7
+    end
+
+    it "creates a new transaction" do
+      expect(account).to receive(:create_transaction)
+      account.deposit(7)
     end
   end
 
-  describe '#withdraw' do
-    it "deduts debit amount from the account's balane" do
-      expect{my_account.withdraw(7)}.to change{my_account.balance}.by -7
+  describe "#withdraw" do
+    it "deducts 'amount' from balance" do
+      expect{account.withdraw(7)}.to change{account.balance}.to -7
+    end
+
+    it "creates a new transaction" do
+      expect(account).to receive(:create_transaction)
+      account.withdraw(7)
     end
   end
 end

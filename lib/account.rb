@@ -1,46 +1,27 @@
-require_relative "transaction_log"
-require_relative "statement"
-
+require "transaction"
 class Account
-  attr_reader :balance, :history
+  attr_reader :balance
 
   def initialize
     @balance = 0
-    @history = TransactionLog.new
   end
 
-  def deposit(cridet)
-    @balance += cridet
-    new_transaction(cridet, 0)
-    save_transaction
+  def deposit(amount)
+    @balance += amount
+    create_transaction(credit: amount)
   end
 
-  def withdraw(debit)
-    @balance -= debit
-    new_transaction(0, debit)
-    save_transaction
-  end
-
-  def print_statement
-    create_statement
-    @statement.get
+  def withdraw(amount)
+    @balance -= amount
+    create_transaction(debit: amount)
   end
 
 
   private
-  attr_reader :transaction, :statement
+  attr_reader :transaction
 
-  def new_transaction(cridet, debit)
-    balance = @balance
-    @transaction = history.create_transaction(cridet, debit, balance)
-  end
-
-  def save_transaction
-    history.save_transaction(@transaction)
-  end
-
-  def create_statement
-    @statement = Statement.new(history.log)
+  def create_transaction(credit: credit=0, debit: debit=0)
+    @transaction = Transaction.new(credit: credit, debit: debit, balance: balance)
   end
 
 end
