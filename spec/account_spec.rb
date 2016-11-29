@@ -24,5 +24,10 @@ describe Account do
     it "deducts 'amount' from balance" do
       expect{account.withdraw(7)}.to change{account.balance}.to -7
     end
+
+    it "creates a new transaction" do
+      expect(account).to receive(:create_transaction)
+      account.withdraw(7)
+    end
   end
 end
