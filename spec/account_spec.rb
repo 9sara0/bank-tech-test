@@ -13,6 +13,11 @@ describe Account do
     it "increases balance by 'amount'" do
       expect{account.deposit(7)}.to change{account.balance}.by 7
     end
+
+    it "creates a new transaction" do
+      expect(account).to receive(:create_transaction)
+      account.deposit(7)
+    end
   end
 
   describe "#withdraw" do
