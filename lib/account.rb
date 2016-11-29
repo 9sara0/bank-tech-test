@@ -1,9 +1,11 @@
 require "transaction"
+require "transaction_history"
 class Account
-  attr_reader :balance
+  attr_reader :balance, :history
 
   def initialize
     @balance = 0
+    @history = TransactionHistory.new
   end
 
   def deposit(amount)

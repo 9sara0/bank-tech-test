@@ -7,6 +7,10 @@ describe Account do
     it "has a zero balance" do
       expect(account.balance).to eq 0
     end
+
+    it 'has a history as a TransactionHistory object ' do
+      expect(account.history).to be_a_kind_of(TransactionHistory)
+    end
   end
 
   describe "#deposit" do
