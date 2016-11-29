@@ -15,4 +15,10 @@ describe Account do
       expect{account.deposit(7)}.to change{account.balance}.by 7
     end
   end
+
+  describe "" do
+    it "deducts 'amount' from balance" do
+      expect{account.withdraw(7)}.to change{account.balance}.to -7
+    end
+  end
 end
