@@ -9,4 +9,11 @@ describe TransactionHistory do
       expect(history.log).to be_empty
     end
   end
+
+  describe "#save_transaction" do
+    it "saves a passed transaction to the log" do
+      history.save_transaction(transaction)
+      expect(history.log).to include transaction
+    end
+  end
 end

@@ -4,5 +4,8 @@ class TransactionHistory
   def initialize
     @log = []
   end
-  
+
+  def save_transaction(transaction)
+    @log << transaction
+  end
 end
