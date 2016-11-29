@@ -2,7 +2,6 @@ require "account"
 
 describe Account do
   subject(:account) { described_class.new }
-  let(:amount)      { double :amount }
 
   context "When initialized" do
     it "has a zero balance" do
@@ -13,6 +12,12 @@ describe Account do
   describe "#deposit" do
     it "increases balance by 'amount'" do
       expect{account.deposit(7)}.to change{account.balance}.by 7
+    end
+  end
+
+  describe "#withdraw" do
+    it "deducts 'amount' from balance" do
+      expect{account.withdraw(7)}.to change{account.balance}.to -7
     end
   end
 end
