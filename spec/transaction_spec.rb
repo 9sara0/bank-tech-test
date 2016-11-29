@@ -27,5 +27,10 @@ describe Transaction do
       transaction = described_class.new(debit: debit, balance: balance)
       expect(transaction.credit).to eq 0
     end
+
+    it "has a default debit of zero" do
+      transaction = described_class.new(credit: credit, balance: balance)
+      expect(transaction.debit).to eq 0
+    end
   end
 end
