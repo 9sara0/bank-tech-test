@@ -3,7 +3,8 @@ require "transaction"
 describe Transaction do
   let(:credit)          { double :credit }
   let(:debit)           { double :debit }
-  subject(:transaction) { described_class.new(credit, debit) }
+  let(:new_balance)     { double :new_balance }
+  subject(:transaction) { described_class.new(credit, debit, new_balance) }
 
   context "When initialized" do
     it "knows the transaction's date" do
@@ -16,6 +17,10 @@ describe Transaction do
 
     it "saves the debited amount" do
       expect(transaction.debit).to eq debit
+    end
+
+    it "saves the balance after the transaction is preformed" do
+      expect(transaction.balance).to eq new_balance
     end
   end
 
