@@ -4,7 +4,7 @@ describe Transaction do
   let(:credit)          { double :credit }
   let(:debit)           { double :debit }
   let(:new_balance)     { double :new_balance }
-  subject(:transaction) { described_class.new(credit, debit, new_balance) }
+  subject(:transaction) { described_class.new(credit: credit, debit: debit, new_balance: new_balance) }
 
   context "When initialized" do
     it "knows the transaction's date" do
