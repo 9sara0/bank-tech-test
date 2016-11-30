@@ -26,8 +26,6 @@ date       || credit || debit   || balance
 
 ## Installation
 
-##Installation
-
 1. `git clone https://github.com/9sarah0/bank-tech-test.git`
 2. `cd bank-tech-test`
 3. `bundle`
